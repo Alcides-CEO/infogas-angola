@@ -1,0 +1,46 @@
+.filterbar {
+  background: #0d1b2a; border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 0; position: sticky; top: var(--nav-h); z-index: 50;
+}
+.filterbar__inner {
+  max-width: 100%; padding: 0 24px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.filterbar__label { color: rgba(255,255,255,0.4); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.filterbar__select {
+  padding: 8px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px; color: white; font-size: 13px; outline: none; cursor: pointer;
+}
+.filterbar__select option { background: #0d1b2a; }
+.filterbar__chips { display: flex; gap: 6px; }
+.filter-chip {
+  padding: 7px 14px; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500; cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-chip:hover { border-color: rgba(255,94,0,0.3); color: rgba(255,255,255,0.9); }
+.filter-chip--active { background: rgba(255,94,0,0.12); border-color: rgba(255,94,0,0.4); color: #FF8C3A; }
+.filterbar__count { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.4); }
+.filterbar__dot { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px #22C55E; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+
+/* Right side */
+.filterbar__right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.filterbar__count { font-size: 12px; color: rgba(255,255,255,0.5); white-space: nowrap; }
+.filterbar__live { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.35); }
+
+/* Reset chip */
+.filter-chip--reset {
+  background: rgba(239,68,68,0.08) !important;
+  border-color: rgba(239,68,68,0.25) !important;
+  color: #EF4444 !important;
+}
+.filter-chip--reset:hover { background: rgba(239,68,68,0.15) !important; }
+.filterbar__loading { font-size:12px; color:rgba(255,255,255,0.3); }
+.filter-reset {
+  padding:6px 12px; border-radius:8px;
+  background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3);
+  color:#EF4444; font-size:12px; cursor:pointer; transition:all 0.2s;
+}
+.filter-reset:hover { background:rgba(239,68,68,0.2); }
