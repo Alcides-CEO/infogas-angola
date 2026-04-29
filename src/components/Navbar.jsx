@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
-const WHATSAPP_NUMBER = '+244937999343'
+const WHATSAPP_NUMBER = '+244922200667'
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, '')}`
 
 export default function Navbar() {
