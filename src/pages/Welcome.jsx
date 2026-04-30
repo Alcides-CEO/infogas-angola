@@ -33,7 +33,7 @@ export default function Welcome() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'auto';
     return () => { document.body.style.overflow = ''; };
   }, []);
 
@@ -125,7 +125,7 @@ export default function Welcome() {
 
         {/* Stats ficam DENTRO do main, abaixo do botão, sempre centralizados */}
         <div className="welcome__stats au7">
-          {[['500+','Vendedores'],['18','Províncias'],['24/7','Disponível']].map(([v, l]) => (
+          {[['+200','Vendedores'],['11','Provincias'],['24/7','Disponivel']].map(([v, l]) => (
             <div key={l} className="stat-item">
               <strong>{v}</strong>
               <span>{l}</span>

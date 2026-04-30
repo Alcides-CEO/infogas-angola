@@ -1,46 +1,92 @@
+/* ===== FILTERBAR — RESPONSIVO ===== */
 .filterbar {
-  background: #0d1b2a; border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 12px 0; position: sticky; top: var(--nav-h); z-index: 50;
+  background: #0d1b2a;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  position: sticky; top: var(--nav-h,72px); z-index: 50;
+  overflow-x: hidden;
 }
 .filterbar__inner {
-  max-width: 100%; padding: 0 24px;
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 10px 14px;
+  display: flex; flex-direction: column; gap: 8px;
 }
-.filterbar__label { color: rgba(255,255,255,0.4); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+.filterbar__label {
+  color: rgba(255,255,255,.4); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+/* Linha de província */
+.filterbar__row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+
 .filterbar__select {
-  padding: 8px 14px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px; color: white; font-size: 13px; outline: none; cursor: pointer;
+  flex: 1; min-width: 0;
+  padding: 8px 12px; background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px; color: white; font-size: 13px;
+  outline: none; cursor: pointer;
+  /* impede overflow no mobile */
+  max-width: 100%;
 }
 .filterbar__select option { background: #0d1b2a; }
-.filterbar__chips { display: flex; gap: 6px; }
+
+/* Chips — scroll horizontal no mobile */
+.filterbar__chips {
+  display: flex; gap: 6px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 2px;
+}
+.filterbar__chips::-webkit-scrollbar { display: none; }
+
 .filter-chip {
-  padding: 7px 14px; border-radius: 8px;
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500; cursor: pointer;
-  transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 8px;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.65); font-size: 12px;
+  font-weight: 500; cursor: pointer; transition: all .2s;
+  white-space: nowrap; flex-shrink: 0;
 }
-.filter-chip:hover { border-color: rgba(255,94,0,0.3); color: rgba(255,255,255,0.9); }
-.filter-chip--active { background: rgba(255,94,0,0.12); border-color: rgba(255,94,0,0.4); color: #FF8C3A; }
-.filterbar__count { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.4); }
-.filterbar__dot { width: 7px; height: 7px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 8px #22C55E; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+.filter-chip:hover { border-color: rgba(255,94,0,.3); color: rgba(255,255,255,.9); }
+.filter-chip--active { background: rgba(255,94,0,.12); border-color: rgba(255,94,0,.4); color: #FF8C3A; }
+.chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-/* Right side */
-.filterbar__right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
-.filterbar__count { font-size: 12px; color: rgba(255,255,255,0.5); white-space: nowrap; }
-.filterbar__live { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.35); }
-
-/* Reset chip */
-.filter-chip--reset {
-  background: rgba(239,68,68,0.08) !important;
-  border-color: rgba(239,68,68,0.25) !important;
-  color: #EF4444 !important;
+/* Rodapé da filterbar — contagem + reset */
+.filterbar__footer {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px;
 }
-.filter-chip--reset:hover { background: rgba(239,68,68,0.15) !important; }
-.filterbar__loading { font-size:12px; color:rgba(255,255,255,0.3); }
+.filterbar__count {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: rgba(255,255,255,.4);
+}
+.filterbar__dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #22C55E; box-shadow: 0 0 8px #22C55E;
+  animation: pulse 2s infinite; flex-shrink: 0;
+}
+.filterbar__loading { color: rgba(255,255,255,.3); font-size: 12px; }
+
 .filter-reset {
-  padding:6px 12px; border-radius:8px;
-  background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3);
-  color:#EF4444; font-size:12px; cursor:pointer; transition:all 0.2s;
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 10px; border-radius: 8px;
+  background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3);
+  color: #EF4444; font-size: 11px; cursor: pointer; transition: all .2s;
+  white-space: nowrap;
 }
-.filter-reset:hover { background:rgba(239,68,68,0.2); }
+.filter-reset:hover { background: rgba(239,68,68,.2); }
+
+/* ── Desktop ≥ 768px — tudo em linha ── */
+@media (min-width: 768px) {
+  .filterbar__inner {
+    flex-direction: row; align-items: center;
+    padding: 10px 24px; gap: 12px; flex-wrap: wrap;
+  }
+  .filterbar__chips { overflow-x: visible; }
+  .filterbar__select { flex: 0 0 auto; width: auto; max-width: 220px; }
+  .filterbar__footer { margin-left: auto; flex: 0 0 auto; }
+}
+
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }

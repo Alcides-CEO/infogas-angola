@@ -34,7 +34,7 @@ export default function Navbar() {
 
         {/* WA Button */}
         <a
-          href="https://wa.me/244937999343"
+          href="https://wa.me/244922200667"
           target="_blank" rel="noreferrer"
           className="navbar__wa"
         >

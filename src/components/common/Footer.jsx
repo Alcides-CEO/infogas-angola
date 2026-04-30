@@ -7,20 +7,20 @@ export default function Footer() {
         <div className="footer__brand">
           <div className="footer__logo">🔥 <span>Infogás Angola</span></div>
           <p className="footer__desc">A plataforma que conecta clientes e distribuidores de gás em Angola. Encontre, reserve e encomende gás sem sair de casa.</p>
-          <a href="https://wa.me/244937999343" target="_blank" rel="noreferrer" className="footer__wa">
-            📲 +244 937 999 343
+          <a href="https://wa.me/244922200667" target="_blank" rel="noreferrer" className="footer__wa">
+            📲 +244 922 200 667
           </a>
         </div>
         <div className="footer__links">
           <h4>Plataforma</h4>
           <a href="#mapa">Ver Mapa</a>
           <a href="#reservas">Reservas</a>
-          <a href="/vendor/login">Área do Vendedor</a>
-          <a href="/admin/login">Admin</a>
+         
+         
         </div>
         <div className="footer__links" id="contactos">
           <h4>Contacto</h4>
-          <a href="https://wa.me/244937999343">WhatsApp</a>
+          <a href="https://wa.me/244922200667">WhatsApp</a>
           <a href="mailto:info@infogas.ao">info@infogas.ao</a>
           <a href="#">Suporte Técnico</a>
         </div>
@@ -40,7 +40,7 @@ export default function Footer() {
       </div>
       <div className="footer__bottom">
         <span>© 2025 Infogás Angola. Todos os direitos reservados.</span>
-        <span>Feito com 🔥 em Angola</span>
+        <span>Feito pela M.A CODE em Angola</span>
       </div>
     </footer>
   );

@@ -1,59 +1,96 @@
+/* ===== NAVBAR — RESPONSIVO ===== */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: var(--nav-h);
-  transition: all 0.4s ease;
+  transition: all .4s ease;
+  /* sempre com fundo no mobile para legibilidade */
+  background: rgba(10,22,40,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
 }
-.navbar--scrolled {
-  background: rgba(10,22,40,0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+.navbar.scrolled {
+  box-shadow: 0 4px 24px rgba(0,0,0,.4);
 }
 .navbar__inner {
-  max-width: 1400px; margin: 0 auto;
-  height: 100%; padding: 0 40px;
-  display: flex; align-items: center; gap: 40px;
+  height: 100%; padding: 0 16px;
+  display: flex; align-items: center; gap: 12px;
 }
+
+/* Logo */
 .navbar__logo {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 7px;
   text-decoration: none; flex-shrink: 0;
 }
-.navbar__logo-flame { font-size: 22px; filter: drop-shadow(0 0 8px rgba(255,94,0,0.7)); }
+.navbar__logo-flame { filter: drop-shadow(0 0 8px rgba(255,94,0,.7)); }
 .navbar__logo-name {
-  font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800;
-  color: white; letter-spacing: -0.3px;
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+  color: white; letter-spacing: -.3px;
 }
 .navbar__logo-angola {
-  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
   color: #FF5E00; letter-spacing: 1px;
-  background: rgba(255,94,0,0.12); padding: 2px 8px; border-radius: 50px;
+  background: rgba(255,94,0,.12); padding: 2px 7px; border-radius: 50px;
 }
-.navbar__links { display: flex; align-items: center; gap: 4px; flex: 1; }
-.navbar__link {
-  padding: 8px 16px; border-radius: 8px; text-decoration: none;
-  color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500;
-  transition: all 0.2s;
+
+/* Links desktop — escondidos por defeito */
+.navbar-links {
+  display: none;
+  flex: 1;
 }
-.navbar__link:hover { color: white; background: rgba(255,255,255,0.06); }
-.navbar__link--vendor {
-  margin-left: auto;
-  color: rgba(255,94,0,0.9); border: 1px solid rgba(255,94,0,0.3);
-}
-.navbar__link--vendor:hover { background: rgba(255,94,0,0.1); color: var(--orange-fire); }
-.navbar__wa {
-  display: flex; align-items: center; gap: 8px;
-  padding: 9px 20px; border-radius: 50px;
-  background: linear-gradient(135deg, #25D366, #128C7E);
+
+/* Botão WhatsApp */
+.navbar-whatsapp {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 50px;
+  background: linear-gradient(135deg,#25D366,#128C7E);
   color: white; text-decoration: none; font-size: 13px; font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(37,211,102,0.35);
+  box-shadow: 0 3px 12px rgba(37,211,102,.35);
+  white-space: nowrap; flex-shrink: 0;
+  transition: all .3s;
 }
-.navbar__wa:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.5); }
-.navbar__burger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
-.navbar__burger span { display: block; width: 22px; height: 2px; background: white; border-radius: 2px; }
-@media (max-width: 768px) {
-  .navbar__inner { padding: 0 20px; }
-  .navbar__links { display: none; }
-  .navbar__links--open { display: flex; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: #0d1b2a; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .navbar__burger { display: flex; }
+.navbar-whatsapp:hover { transform: translateY(-2px); }
+
+/* Hamburger */
+.hamburger {
+  background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px; border-radius: 8px; margin-left: auto;
+  transition: background .2s;
+}
+.hamburger:hover { background: rgba(255,255,255,.08); }
+
+/* Menu mobile aberto */
+.navbar-links.open {
+  display: flex; flex-direction: column;
+  position: absolute; top: var(--nav-h); left: 0; right: 0;
+  background: #0d1b2a;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 12px 16px 20px;
+  gap: 4px; z-index: 99;
+}
+.nav-link {
+  padding: 10px 14px; border-radius: 8px;
+  text-decoration: none; color: rgba(255,255,255,.7);
+  font-size: 15px; font-weight: 500; transition: all .2s;
+}
+.nav-link:hover { color: white; background: rgba(255,255,255,.06); }
+.vendor-link {
+  color: #FF8C3A !important;
+  border: 1px solid rgba(255,94,0,.25);
+  margin-top: 8px;
+}
+
+/* ── Desktop ≥ 768px ── */
+@media (min-width: 768px) {
+  .navbar__inner { padding: 0 32px; gap: 24px; }
+  .navbar-links {
+    display: flex; align-items: center; gap: 4px; flex: 1;
+  }
+  .nav-link { font-size: 14px; padding: 8px 14px; }
+  .hamburger { display: none; }
+}
+
+@media (min-width: 1024px) {
+  .navbar__inner { padding: 0 48px; }
+  .navbar-whatsapp span { display: inline; }
 }
