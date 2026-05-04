@@ -11,16 +11,15 @@ const particles = Array.from({ length: 18 }, (_, i) => ({
   dur: Math.random() * 6 + 6,
 }));
 
-// Textos "M.A CODE" flutuando no fundo em várias posições e tamanhos
 const floaters = Array.from({ length: 10 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
-  size: Math.random() * 28 + 14,       // 14px – 42px
-  opacity: Math.random() * 0.06 + 0.02, // muito subtil: 2%–8%
-  dur: Math.random() * 30 + 25,         // 25s – 55s (devagar, como à deriva)
-  delay: -(Math.random() * 30),         // começar já em movimento
-  rotate: Math.random() * 40 - 20,      // -20° a +20°
+  size: Math.random() * 28 + 14,
+  opacity: Math.random() * 0.06 + 0.02,
+  dur: Math.random() * 30 + 25,
+  delay: -(Math.random() * 30),
+  rotate: Math.random() * 40 - 20,
 }));
 
 const BOTIJA_TYPES = [
@@ -30,17 +29,16 @@ const BOTIJA_TYPES = [
 ];
 
 export default function Welcome() {
+  // Botão leva para o modo gratuito — não para a home directamente
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = ''; };
   }, []);
 
   return (
     <div className="welcome">
-
-      {/* ── Fundo ── */}
       <div className="welcome__bg">
         <div className="welcome__mesh" />
         {particles.map(p => (
@@ -52,31 +50,22 @@ export default function Welcome() {
               animationDuration: `${p.dur}s`,
             }} />
         ))}
-        <div className="glow g1" />
-        <div className="glow g2" />
-        <div className="glow g3" />
+        <div className="glow g1" /><div className="glow g2" /><div className="glow g3" />
 
-        {/* Textos "M.A CODE" à deriva no fundo */}
         {floaters.map(f => (
-          <span
-            key={f.id}
-            className="macode-floater"
+          <span key={f.id} className="macode-floater"
             style={{
-              left: `${f.x}%`,
-              top:  `${f.y}%`,
-              fontSize: f.size,
-              opacity:  f.opacity,
+              left: `${f.x}%`, top: `${f.y}%`,
+              fontSize: f.size, opacity: f.opacity,
               transform: `rotate(${f.rotate}deg)`,
-              animationDuration:  `${f.dur}s`,
-              animationDelay:     `${f.delay}s`,
-            }}
-          >
+              animationDuration: `${f.dur}s`,
+              animationDelay: `${f.delay}s`,
+            }}>
             M.A CODE
           </span>
         ))}
       </div>
 
-      {/* ── Logo ── */}
       <header className="welcome__logo au1">
         <div className="flame-icon-wrap">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="#FF5E00"
@@ -88,7 +77,6 @@ export default function Welcome() {
         <span className="logo-badge">Angola</span>
       </header>
 
-      {/* ── Conteúdo principal ── */}
       <main className="welcome__main">
         <div className="eyebrow au2">
           <span className="dot" />
@@ -114,7 +102,8 @@ export default function Welcome() {
           ))}
         </div>
 
-        <button className="welcome__btn au6" onClick={() => navigate('/home')}>
+        {/* Botão vai para o modo gratuito */}
+        <button className="welcome__btn au6" onClick={() => navigate('/explorar')}>
           Entrar na Plataforma
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
             stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -123,9 +112,8 @@ export default function Welcome() {
           </svg>
         </button>
 
-        {/* Stats ficam DENTRO do main, abaixo do botão, sempre centralizados */}
         <div className="welcome__stats au7">
-          {[['+200','Vendedores'],['11','Provincias'],['24/7','Disponivel']].map(([v, l]) => (
+          {[['500+','Vendedores'],['18','Províncias'],['24/7','Disponível']].map(([v, l]) => (
             <div key={l} className="stat-item">
               <strong>{v}</strong>
               <span>{l}</span>
@@ -133,7 +121,6 @@ export default function Welcome() {
           ))}
         </div>
       </main>
-
     </div>
   );
 }
